@@ -4,9 +4,7 @@
  * Имеет свойство HOST, равно 'http://bhj-diploma.u-w.me'.
  * */
 class Entity {
-
-  static HOST = 'http://bhj-diploma.u-w.me';
-  static URL = '/user';
+  
   /**
    * Запрашивает с сервера список данных.
    * Это могут быть счета или доходы/расходы
@@ -16,10 +14,11 @@ class Entity {
     const options = {
       data: data,
       method: 'GET',
-      url: 'http://bhj-diploma.u-w.me' + '/user',
+      url: this.HOST + this.URL,
       callback: callback
     }
-    const response = createRequest(options);
+    const xhr = createRequest(options);
+    return xhr;
   }
 
   /**
@@ -32,7 +31,7 @@ class Entity {
       const options = {
         data: NewData,
         method: 'GET',
-        url: 'http://bhj-diploma.u-w.me' + '/user',
+        url: this.HOST + this.URL,
         callback: callback
       }
       const xhr = createRequest(options);
@@ -47,7 +46,7 @@ class Entity {
       const options = {
         data: data,
         method: 'GET',
-        url: 'http://bhj-diploma.u-w.me' + '/user' + '/' + id,
+        url: this.HOST + this.URL + '/' + id,
         callback: callback
       }
       const response = createRequest(options);
@@ -70,10 +69,13 @@ class Entity {
       const options = {
         data: NewData,
         method: 'POST',
-        url: 'http://bhj-diploma.u-w.me' + '/user' + '/' + id,
+        url: this.HOST + this.URL + '/' + id,
         callback: callback
       }
       const response = createRequest(options);
   }
 }
 
+
+Entity.HOST = 'http://bhj-diploma.u-w.me';
+Entity.URL = '/user';

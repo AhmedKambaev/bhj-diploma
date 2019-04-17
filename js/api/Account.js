@@ -8,7 +8,7 @@ class Account extends Entity {
 	constructor(HOST) {
 	    super(HOST);
 
-	    this.URL = '/account';
+	    Account.URL = '/account';
 	}
 
 }

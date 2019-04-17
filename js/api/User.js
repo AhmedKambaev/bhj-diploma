@@ -5,9 +5,6 @@
  * Имеет свойство URL, равное '/user'.
  * */
 class User {
-
-  HOST = 'http://bhj-diploma.u-w.me';
-  URL = '/user';
   /**
    * Устанавливает текущего пользователя в
    * локальном хранилище.
@@ -44,10 +41,12 @@ class User {
   static fetch( data, callback = f => f ) {
       this.unsetCurrent();
       const options = {
-        data: data,
-        method: 'GET',
-        url: 'http://bhj-diploma.u-w.me' + '/user' + '/current',
-          callback: callback
+          data: data,
+          method: 'GET',
+          url: 'http://bhj-diploma.u-w.me' + '/user' + '/current',
+          callback: (res, err) => {
+            if(err) this.unsetCurrent();
+          }
         }
         const response = createRequest(options);
         this.setCurrent(response);
@@ -115,3 +114,7 @@ class User {
     const response = createRequest(data, url, newCallback, method);
   }
 }
+
+
+  User.HOST = 'http://bhj-diploma.u-w.me';
+  User.URL = '/user';

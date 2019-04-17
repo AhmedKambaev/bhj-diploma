@@ -7,6 +7,6 @@ class Transaction extends Entity {
 	constructor(HOST) {
 	    super(HOST);
 
-	    this.URL = '/transaction';
+	    Transaction.URL = '/transaction';
 	}
 }
